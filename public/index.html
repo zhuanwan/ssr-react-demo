@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>React App SSR</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="Using react, redux, router, axios and express with Server-Side Rendering (SSR)."
+    />
+    <meta name="generator" content="React App SSR" />
+    <meta name="author" content="UIUX Lab" />
+  </head>
+
+  <body class="home">
+    <div id="app">{{reactApp}}</div>
+
+    <script>
+      // 这里存放客户端全局变量
+      window._RENDER_ENV = 'client'
+      window._PRELOADED_STATE = '{}'
+    </script>
+    <script type="server">
+      // 这里存放server全局变量
+    </script>
+  </body>
+</html>
