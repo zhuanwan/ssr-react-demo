@@ -30,7 +30,7 @@ if (window._RENDER_ENV === 'client') {
   ReactDOM.hydrate(
     <Provider store={store}>
       <BrowserRouter>
-        <div id="main">{renderRoutes(customRoutesConfig)}</div>
+        <div id="main-server">{renderRoutes(customRoutesConfig)}</div>
       </BrowserRouter>
     </Provider>,
     document.querySelector('#app')

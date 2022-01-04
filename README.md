@@ -14,7 +14,7 @@
 浏览器打开：http://localhost:4000/
 
 ### 打包
-"client:build": 打包客户端代码
+"client:build": 打包客户端代码 (注意顺序，先打包客户端代码，再打包服务端代码)
 "server:build": 打包服务端代码  
 
 ### 调试打包后的代码

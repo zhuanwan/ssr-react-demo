@@ -9,7 +9,7 @@ export default (pathname, store, context, template) => {
   const content = renderToString(
     <Provider store={store}>
       <StaticRouter location={pathname} context={context}>
-        <div id="main">{renderRoutes(customRoutesConfig)}</div>
+        <div id="main-server">{renderRoutes(customRoutesConfig)}</div>
       </StaticRouter>
     </Provider>
   )

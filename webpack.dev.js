@@ -31,7 +31,7 @@ module.exports = {
                 // }
               },
             ],
-            exclude: /node_modules/,
+            // exclude: /node_modules/,
           },
           {
             test: /\.js$/,
@@ -40,29 +40,6 @@ module.exports = {
           {
             test: /\.css$/,
             use: ['style-loader', 'css-loader', 'postcss-loader'],
-          },
-          {
-            test: /\.module\.less$/,
-            use: [
-              'style-loader',
-              {
-                loader: 'css-loader',
-                options: {
-                  modules: true,
-                },
-              },
-              {
-                loader: 'postcss-loader',
-              },
-              {
-                loader: 'less-loader',
-                options: {
-                  lessOptions: {
-                    javascriptEnabled: true,
-                  },
-                },
-              },
-            ],
           },
           {
             test: /\.less$/,
@@ -115,6 +92,7 @@ module.exports = {
     alias: {
       react$: path.resolve('./node_modules/react'),
       '@': path.resolve('./src/client'),
+      '@nodeModules': path.resolve('./node_modules'),
     },
   },
   plugins: [

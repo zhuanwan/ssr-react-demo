@@ -22,9 +22,11 @@
       {
         "alias": {
           //别名的配置
-          "@": "./src/client"
+          "@": "./src/client",
+          "@nodeModules": "./node_modules"
         }
       }
     ]
-  ]
+  ],
+  "ignore": ["*.css"]
 }

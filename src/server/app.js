@@ -4,6 +4,9 @@ import fs from 'fs'
 import path from 'path'
 import Mock from 'mockjs'
 
+import register from 'ignore-styles'
+register(['.css', '.sass', '.scss'])
+
 import render from './renderer.js'
 import createNewStore from '../store/createStore.js'
 import { matchRoutes } from 'react-router-config'
@@ -44,6 +47,7 @@ app.get('*', (req, res) => {
   const routes = matchRoutes(customRoutesConfig, req.path)
 
   const syncRequests = []
+
   routes.map((item) => {
     const route = item.route
     if (route.component?.appSyncRequestFetching) {
@@ -63,8 +67,8 @@ app.get('*', (req, res) => {
 
       const context = {}
       const content = render(req.url, store, context, data)
-      if (context.notFound) {
-        res.status(404)
+      if (context.NotFound) {
+        return res.status(404).send('404')
       }
       res.send(content)
     })

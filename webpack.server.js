@@ -1,5 +1,6 @@
 const path = require('path')
 const nodeExternal = require('webpack-node-externals')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin') // 提取css
 
 module.exports = {
   mode: 'production',
@@ -30,6 +31,52 @@ module.exports = {
           presets: ['@babel/preset-env', '@babel/preset-react'],
         },
       },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+      },
+      {
+        test: /\.less$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'postcss-loader',
+          },
+          {
+            loader: 'less-loader',
+            options: {
+              lessOptions: {
+                javascriptEnabled: true,
+              },
+            },
+          },
+        ],
+      },
+      {
+        test: /.(png|jpg|gif|jpeg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name]_[hash:8].[ext]',
+            },
+          },
+        ],
+      },
+      {
+        test: /.(woff|woff2|eot|ttf|otf)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name]_[hash:8][ext]',
+            },
+          },
+        ],
+      },
     ],
   },
   resolve: {
@@ -37,13 +84,19 @@ module.exports = {
     alias: {
       react$: path.resolve('./node_modules/react'),
       '@': path.resolve('./src/client'),
+      '@nodeModules': path.resolve('./node_modules'),
     },
   },
-  target: 'node',
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'server.css',
+    }),
+  ],
   entry: './src/server/app.js',
   output: {
     path: path.resolve('dist'),
     filename: 'server.js',
   },
+  target: 'node',
   externals: [nodeExternal()],
 }

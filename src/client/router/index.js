@@ -1,5 +1,5 @@
 import Home from '@/pages/Home.tsx'
-import Form from '@/pages/form'
+import Plugins from '@/pages/plugins'
 import List from '@/pages/list'
 import NoMatch from '@/pages/404'
 import { Redirect } from 'react-router-dom'
@@ -22,9 +22,9 @@ const routesConfig = [
         name: '列表',
       },
       {
-        path: '/home/form',
-        component: Form,
-        name: '表单',
+        path: '/home/plugins',
+        component: Plugins,
+        name: '我的插件',
       },
     ],
   },

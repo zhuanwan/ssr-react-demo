@@ -16,10 +16,9 @@ const ListDemo = () => {
   }
 
   useEffect(() => {
-    if (window._RENDER_ENV === 'client') {
-      onLoadMore()
-    }
+    onLoadMore()
   }, [])
+
   const loadMore = finish ? null : (
     <div
       style={{
