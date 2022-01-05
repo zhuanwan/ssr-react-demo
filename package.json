@@ -7,7 +7,7 @@
     "client:dev": "webpack-dev-server --config webpack.dev.js",
     "client:build": "webpack --progress --config webpack.prod.js",
     "serve:dev": "nodemon --exec babel-node src/server/app.js --extensions '.tsx,.js'",
-    "server:build": "webpack --config webpack.server.js",
+    "serve:build": "webpack --config webpack.server.js",
     "serve:client:run": "nodemon dist/server.js",
     "lint": "eslint --ext .js --ext .jsx src",
     "pm2": "pm2 start dist/server.js --watch"
